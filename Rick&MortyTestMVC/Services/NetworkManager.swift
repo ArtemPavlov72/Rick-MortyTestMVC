@@ -14,7 +14,9 @@ enum NetworkError: Error {
 }
 
 class NetworkManager {
+
     static let shared = NetworkManager()
+
     private init() {}
 
   func fetchData(from url: String, completion: @escaping(Result<RickAndMorty, NetworkError>) -> Void) {
