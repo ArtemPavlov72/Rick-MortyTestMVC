@@ -11,6 +11,10 @@
 		AC74A4032A8E1B14000A9112 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4022A8E1B14000A9112 /* MainViewController.swift */; };
 		AC74A4082A8E1B15000A9112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC74A4072A8E1B15000A9112 /* Assets.xcassets */; };
 		AC74A40B2A8E1B15000A9112 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC74A4092A8E1B15000A9112 /* LaunchScreen.storyboard */; };
+		AC74A4172A8E1FDA000A9112 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4162A8E1FDA000A9112 /* NetworkManager.swift */; };
+		AC74A4192A8E2055000A9112 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4182A8E2055000A9112 /* ImageManager.swift */; };
+		AC74A41C2A8E209F000A9112 /* RickAndMorty.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A41B2A8E209F000A9112 /* RickAndMorty.swift */; };
+		AC74A41F2A8E21A2000A9112 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A41E2A8E21A2000A9112 /* Link.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		AC74A4072A8E1B15000A9112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC74A40A2A8E1B15000A9112 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC74A40C2A8E1B15000A9112 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC74A4162A8E1FDA000A9112 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AC74A4182A8E2055000A9112 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		AC74A41B2A8E209F000A9112 /* RickAndMorty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMorty.swift; sourceTree = "<group>"; };
+		AC74A41E2A8E21A2000A9112 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,9 @@
 		AC74A3FD2A8E1B14000A9112 /* Rick&MortyTestMVC */ = {
 			isa = PBXGroup;
 			children = (
+				AC74A41D2A8E2195000A9112 /* Constants */,
+				AC74A41A2A8E2091000A9112 /* Models */,
+				AC74A4152A8E1FCB000A9112 /* Services */,
 				AC74A4132A8E1C01000A9112 /* ViewControllers */,
 				AC74A4142A8E1C09000A9112 /* Resources */,
 				AC74A4122A8E1BFA000A9112 /* App */,
@@ -83,6 +94,31 @@
 				AC74A4072A8E1B15000A9112 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		AC74A4152A8E1FCB000A9112 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AC74A4162A8E1FDA000A9112 /* NetworkManager.swift */,
+				AC74A4182A8E2055000A9112 /* ImageManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AC74A41A2A8E2091000A9112 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AC74A41B2A8E209F000A9112 /* RickAndMorty.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AC74A41D2A8E2195000A9112 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				AC74A41E2A8E21A2000A9112 /* Link.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,8 +191,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC74A4172A8E1FDA000A9112 /* NetworkManager.swift in Sources */,
+				AC74A41F2A8E21A2000A9112 /* Link.swift in Sources */,
 				AC74A4032A8E1B14000A9112 /* MainViewController.swift in Sources */,
 				AC74A3FF2A8E1B14000A9112 /* AppDelegate.swift in Sources */,
+				AC74A41C2A8E209F000A9112 /* RickAndMorty.swift in Sources */,
+				AC74A4192A8E2055000A9112 /* ImageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
