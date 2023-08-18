@@ -9,6 +9,12 @@ import UIKit
 
 class ImageView: UIImageView {
 
+  //MARK: - Private Properties
+
+  private var spinnerView: UIActivityIndicatorView?
+
+  //MARK: - Public Methods
+
   func fetchImage(from url: String) {
     guard let url = URL(string: url) else {
       image = UIImage(named: "no_image")
@@ -20,8 +26,11 @@ class ImageView: UIImageView {
       return
     }
 
+    spinnerView = showSpinner(in: self)
+
     ImageManager.shared.loadImageWithCache(from: url) { data, response in
       self.image = UIImage(data: data)
+      self.spinnerView?.stopAnimating()
       self.saveDataToCache(with: data, and: response)
     }
   }
