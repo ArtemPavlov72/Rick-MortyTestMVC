@@ -19,6 +19,9 @@
 		AC74A4242A8E271B000A9112 /* RickAndMortyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4232A8E271B000A9112 /* RickAndMortyCollectionViewCell.swift */; };
 		AC74A4272A8E7FD4000A9112 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4262A8E7FD4000A9112 /* UICollectionViewCell.swift */; };
 		AC74A4292A8F7B69000A9112 /* UIView-ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4282A8F7B69000A9112 /* UIView-ActivityIndicator.swift */; };
+		AC74A42D2A8F80A5000A9112 /* HeroDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A42C2A8F80A5000A9112 /* HeroDetailsViewController.swift */; };
+		AC74A42F2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A42E2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift */; };
+		AC74A4322A8F899C000A9112 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4312A8F899C000A9112 /* SelfConfiguringCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		AC74A4232A8E271B000A9112 /* RickAndMortyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC74A4262A8E7FD4000A9112 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		AC74A4282A8F7B69000A9112 /* UIView-ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-ActivityIndicator.swift"; sourceTree = "<group>"; };
+		AC74A42C2A8F80A5000A9112 /* HeroDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsViewController.swift; sourceTree = "<group>"; };
+		AC74A42E2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC74A4312A8F899C000A9112 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				AC74A4022A8E1B14000A9112 /* MainViewController.swift */,
+				AC74A42C2A8F80A5000A9112 /* HeroDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -136,6 +143,7 @@
 			children = (
 				AC74A4212A8E260E000A9112 /* ImageView.swift */,
 				AC74A4232A8E271B000A9112 /* RickAndMortyCollectionViewCell.swift */,
+				AC74A4302A8F83D6000A9112 /* DetailsViewControllerViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,6 +155,15 @@
 				AC74A4282A8F7B69000A9112 /* UIView-ActivityIndicator.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AC74A4302A8F83D6000A9112 /* DetailsViewControllerViews */ = {
+			isa = PBXGroup;
+			children = (
+				AC74A42E2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift */,
+				AC74A4312A8F899C000A9112 /* SelfConfiguringCell.swift */,
+			);
+			path = DetailsViewControllerViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,10 +239,13 @@
 				AC74A4292A8F7B69000A9112 /* UIView-ActivityIndicator.swift in Sources */,
 				AC74A4172A8E1FDA000A9112 /* NetworkManager.swift in Sources */,
 				AC74A41F2A8E21A2000A9112 /* Link.swift in Sources */,
+				AC74A42D2A8F80A5000A9112 /* HeroDetailsViewController.swift in Sources */,
 				AC74A4032A8E1B14000A9112 /* MainViewController.swift in Sources */,
+				AC74A4322A8F899C000A9112 /* SelfConfiguringCell.swift in Sources */,
 				AC74A3FF2A8E1B14000A9112 /* AppDelegate.swift in Sources */,
 				AC74A41C2A8E209F000A9112 /* RickAndMorty.swift in Sources */,
 				AC74A4272A8E7FD4000A9112 /* UICollectionViewCell.swift in Sources */,
+				AC74A42F2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift in Sources */,
 				AC74A4242A8E271B000A9112 /* RickAndMortyCollectionViewCell.swift in Sources */,
 				AC74A4222A8E260E000A9112 /* ImageView.swift in Sources */,
 				AC74A4192A8E2055000A9112 /* ImageManager.swift in Sources */,

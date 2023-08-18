@@ -82,6 +82,12 @@ extension MainViewController {
       fetchData(from: rickAndMorty?.info.next ?? "")
     }
   }
+  
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let heroDetailVC = HeroDetailsViewController()
+    heroDetailVC.hero = heros[indexPath.item]
+    show(heroDetailVC, sender: nil)
+  }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

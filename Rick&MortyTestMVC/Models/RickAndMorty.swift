@@ -17,7 +17,7 @@ struct RickAndMorty: Decodable {
     let prev: String?
   }
   
-  struct Hero: Decodable {
+  struct Hero: Decodable, Hashable {
     let id: Int
     let name: String
     let status: String
@@ -29,7 +29,7 @@ struct RickAndMorty: Decodable {
     let episode: [String]
     let url: String
     
-    struct Location: Decodable {
+    struct Location: Decodable, Hashable {
       let name: String
     }
   }
