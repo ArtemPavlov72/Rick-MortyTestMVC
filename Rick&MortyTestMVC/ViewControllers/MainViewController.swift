@@ -12,7 +12,7 @@ class MainViewController: UICollectionViewController {
   // MARK: - Private Properties
 
   private var rickAndMorty: RickAndMorty?
-  private let cellID = "cell"
+  private var heros: [RickAndMorty.Hero] = []
 
   // MARK: - Life Cycles Methods
 
@@ -20,8 +20,9 @@ class MainViewController: UICollectionViewController {
     super.viewDidLoad()
     setupNavigationBar()
     applyDefaultBehavior()
-    collectionView.register(RickAndMortyCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
-    fetchData()
+    collectionView.register(RickAndMortyCollectionViewCell.self,
+                            forCellWithReuseIdentifier: RickAndMortyCollectionViewCell.reuseId)
+    fetchData(from: Link.rickAndMorty.rawValue)
   }
 
   // MARK: - Private Methods
@@ -32,11 +33,13 @@ class MainViewController: UICollectionViewController {
     navigationController?.navigationBar.prefersLargeTitles = true
   }
 
-  private func fetchData() {
-    NetworkManager.shared.fetchData(from: Link.rickAndMorty.rawValue) { [weak self] result in
+  private func fetchData(from url: String) {
+    NetworkManager.shared.fetchData(from: url) { [weak self] result in
+
       switch result {
       case .success(let rickAndMorty):
         self?.rickAndMorty = rickAndMorty
+        rickAndMorty.results.forEach { self?.heros.append($0) }
         self?.collectionView.reloadData()
       case .failure(let error):
         print(error)
@@ -51,25 +54,33 @@ class MainViewController: UICollectionViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension MainViewController {
 
+extension MainViewController {
   override func collectionView(_ collectionView: UICollectionView,
                                numberOfItemsInSection section: Int) -> Int {
-    rickAndMorty?.results.count ?? 0
+    heros.count
   }
 
   override func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? RickAndMortyCollectionViewCell else {
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RickAndMortyCollectionViewCell.reuseId,
+                                                        for: indexPath) as? RickAndMortyCollectionViewCell else {
       return RickAndMortyCollectionViewCell()
     }
-
-    if let hero = rickAndMorty?.results[indexPath.item] {
-      cell.configureCell(with: hero)
-    }
-
+    cell.configureCell(with: self.heros[indexPath.item])
     return cell
+  }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension MainViewController {
+  override func collectionView(_ collectionView: UICollectionView,
+                               willDisplay cell: UICollectionViewCell,
+                               forItemAt indexPath: IndexPath) {
+    if indexPath.item == (heros.count) - 2 {
+      fetchData(from: rickAndMorty?.info.next ?? "")
+    }
   }
 }
 

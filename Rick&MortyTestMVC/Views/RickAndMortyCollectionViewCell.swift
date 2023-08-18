@@ -11,6 +11,10 @@ class RickAndMortyCollectionViewCell: UICollectionViewCell {
 
   // MARK: - Public Properties
 
+  static let reuseId = "rickAndMortyCell"
+
+  // MARK: - Private Properties
+
   private let heroName: UILabel = {
     let label = UILabel()
     label.textAlignment = .center
