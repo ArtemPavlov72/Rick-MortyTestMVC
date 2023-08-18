@@ -83,7 +83,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     let paddingWidth = 20 * (appearance.numberOfItemsPerRow + 1)
     let avaibleWidth = collectionView.frame.width - paddingWidth
     let widthPerItem = avaibleWidth / appearance.numberOfItemsPerRow
-    return CGSize(width: widthPerItem, height: widthPerItem)
+    let heightPerItem = widthPerItem * 1.295
+    return CGSize(width: widthPerItem, height: heightPerItem)
   }
 
   func collectionView(_ collectionView: UICollectionView,
@@ -116,8 +117,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 private extension MainViewController {
   struct Appearance {
     let navigationBarTitle = "Characters"
-    let backGroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-
+    let backGroundColor: UIColor = UIColor(red:0.01569, green:0.04706, blue:0.11765, alpha:1.00000)
     let leftInsert: CGFloat = 20
     let rightInsert: CGFloat = 20
     let topInsert: CGFloat = 20
