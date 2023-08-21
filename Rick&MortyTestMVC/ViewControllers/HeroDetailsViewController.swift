@@ -13,6 +13,7 @@ class HeroDetailsViewController: UIViewController {
 
   var hero: RickAndMorty.Hero?
   var heroInfo: HeroInfo?
+  var episodesInfo: EpisodeURL?
 
   //MARK: - Private Properties
 
@@ -25,6 +26,8 @@ class HeroDetailsViewController: UIViewController {
     super.viewDidLoad()
 
     heroInfo = HeroInfo(species: hero?.species, type: hero?.type, gender: hero?.gender)
+    episodesInfo = EpisodeURL(episode: hero?.episode ?? [])
+    
     setupCollectionView()
     applyDefaultBehavior()
     createDataSource()
@@ -49,6 +52,8 @@ class HeroDetailsViewController: UIViewController {
                             forCellWithReuseIdentifier: DetailHeroInfoCollectionViewCell.reuseId)
     collectionView.register(DetailHeroOriginCollectionViewCell.self,
                             forCellWithReuseIdentifier: DetailHeroOriginCollectionViewCell.reuseId)
+    collectionView.register(DetailHeroEpisodeCollectionViewCell.self,
+                            forCellWithReuseIdentifier: DetailHeroEpisodeCollectionViewCell.reuseId)
   }
 
   // MARK: - Manage the Data
@@ -74,6 +79,9 @@ class HeroDetailsViewController: UIViewController {
         return configure(DetailHeroInfoCollectionViewCell.self, with: heroInfo, for: indexPath)
       case .origin:
         return configure(DetailHeroOriginCollectionViewCell.self, with: hero?.origin, for: indexPath)
+      case .episodes:
+        let episode = episodesInfo?.episode[indexPath.item]
+        return configure(DetailHeroEpisodeCollectionViewCell.self, with: episode, for: indexPath)
       }
     }
 
@@ -102,6 +110,9 @@ class HeroDetailsViewController: UIViewController {
     snapshot.appendSections([Section.origin])
     snapshot.appendItems([hero?.origin], toSection: .origin)
 
+    snapshot.appendSections([Section.episodes])
+    snapshot.appendItems(episodesInfo?.episode ?? [], toSection: .episodes)
+
     return snapshot
   }
 
@@ -118,6 +129,8 @@ class HeroDetailsViewController: UIViewController {
         return self.createHeroInfoSection()
       case .origin:
         return self.createHeroOriginSection()
+      case .episodes:
+        return self.createHeroEpisodeSection()
       }
     }
 
@@ -180,6 +193,28 @@ class HeroDetailsViewController: UIViewController {
 
     return layoutSection
   }
+
+  private func createHeroEpisodeSection() -> NSCollectionLayoutSection {
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                          heightDimension: .fractionalHeight(1))
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.10))
+    let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+    group.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 16, trailing: 0)
+
+
+    let layoutSection = NSCollectionLayoutSection(group: group)
+    layoutSection.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 24, bottom: 0, trailing: 24)
+
+    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(30))
+    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+    header.pinToVisibleBounds = true
+
+    layoutSection.boundarySupplementaryItems = [header]
+
+    return layoutSection
+  }
 }
 
 // MARK: - Appearance
@@ -197,5 +232,6 @@ private extension HeroDetailsViewController {
     case heroImage
     case heroInfo = "Info"
     case origin = "Origin"
+    case episodes = "Episodes"
   }
 }

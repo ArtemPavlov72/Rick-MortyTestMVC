@@ -42,6 +42,16 @@ struct LocationType: Decodable, Hashable {
   let type: String
 }
 
+struct Episode: Decodable, Hashable {
+  let name: String?
+  let air_date: String?
+  let episode: String?
+}
+
+struct EpisodeURL: Hashable {
+  let episode: [String]
+}
+
 struct HeroInfo: Hashable {
   let species: String?
   let type: String?
