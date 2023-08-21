@@ -47,6 +47,8 @@ class HeroDetailsViewController: UIViewController {
                             forCellWithReuseIdentifier: DetailHeroPhotoCollectionViewCell.reuseId)
     collectionView.register(DetailHeroInfoCollectionViewCell.self,
                             forCellWithReuseIdentifier: DetailHeroInfoCollectionViewCell.reuseId)
+    collectionView.register(DetailHeroOriginCollectionViewCell.self,
+                            forCellWithReuseIdentifier: DetailHeroOriginCollectionViewCell.reuseId)
   }
 
   // MARK: - Manage the Data
@@ -70,6 +72,8 @@ class HeroDetailsViewController: UIViewController {
         return configure(DetailHeroPhotoCollectionViewCell.self, with: hero, for: indexPath)
       case .heroInfo:
         return configure(DetailHeroInfoCollectionViewCell.self, with: heroInfo, for: indexPath)
+      case .origin:
+        return configure(DetailHeroOriginCollectionViewCell.self, with: hero?.origin, for: indexPath)
       }
     }
 
@@ -95,6 +99,9 @@ class HeroDetailsViewController: UIViewController {
     snapshot.appendSections([Section.heroInfo])
     snapshot.appendItems([heroInfo], toSection: .heroInfo)
 
+    snapshot.appendSections([Section.origin])
+    snapshot.appendItems([hero?.origin], toSection: .origin)
+
     return snapshot
   }
 
@@ -109,13 +116,14 @@ class HeroDetailsViewController: UIViewController {
         return self.createHeroPhotoSection()
       case .heroInfo:
         return self.createHeroInfoSection()
+      case .origin:
+        return self.createHeroOriginSection()
       }
     }
 
     let config = UICollectionViewCompositionalLayoutConfiguration()
-    config.interSectionSpacing = 8
+    config.interSectionSpacing = 16
     layout.configuration = config
-//    layout.register(RoundedBackgroundView.self, forDecorationViewOfKind: RoundedBackgroundView.reuseId)
 
     return layout
   }
@@ -153,6 +161,25 @@ class HeroDetailsViewController: UIViewController {
     return layoutSection
   }
 
+  private func createHeroOriginSection() -> NSCollectionLayoutSection {
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                          heightDimension: .fractionalHeight(1))
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.10))
+    let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+
+    let layoutSection = NSCollectionLayoutSection(group: group)
+    layoutSection.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 24, bottom: 0, trailing: 24)
+
+    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(30))
+    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+    header.pinToVisibleBounds = true
+
+    layoutSection.boundarySupplementaryItems = [header]
+
+    return layoutSection
+  }
 }
 
 // MARK: - Appearance
@@ -169,5 +196,6 @@ private extension HeroDetailsViewController {
   enum Section: String, Hashable, CaseIterable {
     case heroImage
     case heroInfo = "Info"
+    case origin = "Origin"
   }
 }

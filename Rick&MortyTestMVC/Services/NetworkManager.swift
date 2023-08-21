@@ -19,7 +19,7 @@ class NetworkManager {
 
     private init() {}
 
-  func fetchData(from url: String, completion: @escaping(Result<RickAndMorty, NetworkError>) -> Void) {
+  func fetchData<T: Decodable>(dataType: T.Type, from url: String, completion: @escaping(Result<T, NetworkError>) -> Void) {
       guard let url = URL(string: url) else {
           completion(.failure(.invalidURL))
           return
@@ -33,9 +33,9 @@ class NetworkManager {
           }
 
           do {
-              let rickAndMorty = try JSONDecoder().decode(RickAndMorty.self, from: data)
+              let type = try JSONDecoder().decode(T.self, from: data)
               DispatchQueue.main.async {
-                  completion(.success(rickAndMorty))
+                  completion(.success(type))
               }
           } catch {
               completion(.failure(.decodingError))

@@ -32,8 +32,14 @@ struct RickAndMorty: Decodable {
     
     struct Location: Decodable, Hashable {
       let name: String
+      let url: String?
     }
   }
+}
+
+struct LocationType: Decodable, Hashable {
+  let name: String
+  let type: String
 }
 
 struct HeroInfo: Hashable {

@@ -24,6 +24,7 @@
 		AC74A4322A8F899C000A9112 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4312A8F899C000A9112 /* SelfConfiguringCell.swift */; };
 		AC74A4342A8FEDBF000A9112 /* DetailHeroInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4332A8FEDBF000A9112 /* DetailHeroInfoCollectionViewCell.swift */; };
 		AC74A4362A937761000A9112 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4352A937761000A9112 /* Header.swift */; };
+		AC74A4382A937B8B000A9112 /* DetailHeroOriginCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4372A937B8B000A9112 /* DetailHeroOriginCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		AC74A4312A8F899C000A9112 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		AC74A4332A8FEDBF000A9112 /* DetailHeroInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC74A4352A937761000A9112 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		AC74A4372A937B8B000A9112 /* DetailHeroOriginCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroOriginCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				AC74A4352A937761000A9112 /* Header.swift */,
 				AC74A42E2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift */,
 				AC74A4332A8FEDBF000A9112 /* DetailHeroInfoCollectionViewCell.swift */,
+				AC74A4372A937B8B000A9112 /* DetailHeroOriginCollectionViewCell.swift */,
 				AC74A4312A8F899C000A9112 /* SelfConfiguringCell.swift */,
 			);
 			path = DetailsViewControllerViews;
@@ -245,6 +248,7 @@
 				AC74A4292A8F7B69000A9112 /* UIView-ActivityIndicator.swift in Sources */,
 				AC74A4172A8E1FDA000A9112 /* NetworkManager.swift in Sources */,
 				AC74A41F2A8E21A2000A9112 /* Link.swift in Sources */,
+				AC74A4382A937B8B000A9112 /* DetailHeroOriginCollectionViewCell.swift in Sources */,
 				AC74A42D2A8F80A5000A9112 /* HeroDetailsViewController.swift in Sources */,
 				AC74A4032A8E1B14000A9112 /* MainViewController.swift in Sources */,
 				AC74A4322A8F899C000A9112 /* SelfConfiguringCell.swift in Sources */,
