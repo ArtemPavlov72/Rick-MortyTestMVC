@@ -78,8 +78,8 @@ class DetailHeroEpisodeCollectionViewCell: UICollectionViewCell, SelfConfiguring
       switch result {
       case .success(let episode):
         self?.episodeNameLabel.text = episode.name
-        self?.episodeInfoLabel.text = episode.episode
-        self?.episodeDateLabel.text = episode.air_date
+        self?.episodeInfoLabel.text = self?.formatEpisodeNumber(episode.episode ?? "")
+        self?.episodeDateLabel.text = episode.airDate
       case .failure(let error):
         self?.episodeNameLabel.text = "No info =("
         self?.episodeInfoLabel.text = "No info =("
@@ -87,6 +87,22 @@ class DetailHeroEpisodeCollectionViewCell: UICollectionViewCell, SelfConfiguring
         print(error)
       }
     }
+  }
+  
+  private func formatEpisodeNumber(_ text: String) -> String {
+    var numberOfSeason = "\(text[1])\(text[2])"
+    if numberOfSeason.first == "0" {
+      numberOfSeason.removeFirst()
+    }
+    
+    var numberOfEpisosod = "\(text[4])\(text[5])"
+    if numberOfEpisosod.first == "0" {
+      numberOfEpisosod.removeFirst()
+    }
+    
+    let formatEpisodNumber = "Episode: \(numberOfEpisosod), Season: \(numberOfSeason)"
+    
+    return formatEpisodNumber
   }
   
   // MARK: - Setup Constraints

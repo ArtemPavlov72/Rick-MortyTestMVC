@@ -44,7 +44,7 @@ struct LocationType: Decodable, Hashable {
 
 struct Episode: Decodable, Hashable {
   let name: String?
-  let air_date: String?
+  let airDate: String?
   let episode: String?
 }
 
