@@ -9,14 +9,22 @@ import UIKit
 
 class HeroDetailsViewController: UIViewController {
 
-  //MARK: - Private Properties
+  //MARK: - Public Properties
 
   var hero: RickAndMorty.Hero?
+  var heroInfo: HeroInfo?
+
+  //MARK: - Private Properties
+
   private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
   private var collectionView: UICollectionView!
 
+  // MARK: - Life Cycles Methods
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    heroInfo = HeroInfo(species: hero?.species, type: hero?.type, gender: hero?.gender)
     setupCollectionView()
     applyDefaultBehavior()
     createDataSource()
@@ -34,8 +42,11 @@ class HeroDetailsViewController: UIViewController {
                                       collectionViewLayout: createCompositionalLayout())
     collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     view.addSubview(collectionView)
+    collectionView.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.reuseId)
     collectionView.register(DetailHeroPhotoCollectionViewCell.self,
                             forCellWithReuseIdentifier: DetailHeroPhotoCollectionViewCell.reuseId)
+    collectionView.register(DetailHeroInfoCollectionViewCell.self,
+                            forCellWithReuseIdentifier: DetailHeroInfoCollectionViewCell.reuseId)
   }
 
   // MARK: - Manage the Data
@@ -57,9 +68,22 @@ class HeroDetailsViewController: UIViewController {
       switch sections {
       case .heroImage:
         return configure(DetailHeroPhotoCollectionViewCell.self, with: hero, for: indexPath)
+      case .heroInfo:
+        return configure(DetailHeroInfoCollectionViewCell.self, with: heroInfo, for: indexPath)
       }
     }
+
+    dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+      guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Header.reuseId, for: indexPath) as? Header else { return Header() }
+      guard let item = self.dataSource?.itemIdentifier(for: indexPath) else { return Header() }
+      guard let section = self.dataSource?.snapshot().sectionIdentifier(containingItem: item) else { return Header() }
+      sectionHeader.title.text = section.rawValue
+      return sectionHeader
+    }
+
     dataSource?.apply(generateSnapshot(), animatingDifferences: true)
+
+
   }
 
   private func generateSnapshot() -> NSDiffableDataSourceSnapshot<Section, AnyHashable>  {
@@ -67,6 +91,9 @@ class HeroDetailsViewController: UIViewController {
 
     snapshot.appendSections([Section.heroImage])
     snapshot.appendItems([hero], toSection: .heroImage)
+
+    snapshot.appendSections([Section.heroInfo])
+    snapshot.appendItems([heroInfo], toSection: .heroInfo)
 
     return snapshot
   }
@@ -80,6 +107,8 @@ class HeroDetailsViewController: UIViewController {
       switch section {
       case .heroImage:
         return self.createHeroPhotoSection()
+      case .heroInfo:
+        return self.createHeroInfoSection()
       }
     }
 
@@ -96,11 +125,30 @@ class HeroDetailsViewController: UIViewController {
                                           heightDimension: .fractionalHeight(1))
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.45))
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.35))
     let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
     let layoutSection = NSCollectionLayoutSection(group: group)
-    layoutSection.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
+
+    return layoutSection
+  }
+
+  private func createHeroInfoSection() -> NSCollectionLayoutSection {
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                          heightDimension: .fractionalHeight(1))
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.15))
+    let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+
+    let layoutSection = NSCollectionLayoutSection(group: group)
+    layoutSection.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 24, bottom: 0, trailing: 24)
+
+    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(30))
+    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+    header.pinToVisibleBounds = true
+
+    layoutSection.boundarySupplementaryItems = [header]
 
     return layoutSection
   }
@@ -120,5 +168,6 @@ private extension HeroDetailsViewController {
 private extension HeroDetailsViewController {
   enum Section: String, Hashable, CaseIterable {
     case heroImage
+    case heroInfo = "Info"
   }
 }

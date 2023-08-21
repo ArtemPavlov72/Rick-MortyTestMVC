@@ -22,6 +22,8 @@
 		AC74A42D2A8F80A5000A9112 /* HeroDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A42C2A8F80A5000A9112 /* HeroDetailsViewController.swift */; };
 		AC74A42F2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A42E2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift */; };
 		AC74A4322A8F899C000A9112 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4312A8F899C000A9112 /* SelfConfiguringCell.swift */; };
+		AC74A4342A8FEDBF000A9112 /* DetailHeroInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4332A8FEDBF000A9112 /* DetailHeroInfoCollectionViewCell.swift */; };
+		AC74A4362A937761000A9112 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74A4352A937761000A9112 /* Header.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		AC74A42C2A8F80A5000A9112 /* HeroDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsViewController.swift; sourceTree = "<group>"; };
 		AC74A42E2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC74A4312A8F899C000A9112 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		AC74A4332A8FEDBF000A9112 /* DetailHeroInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC74A4352A937761000A9112 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +164,9 @@
 		AC74A4302A8F83D6000A9112 /* DetailsViewControllerViews */ = {
 			isa = PBXGroup;
 			children = (
+				AC74A4352A937761000A9112 /* Header.swift */,
 				AC74A42E2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift */,
+				AC74A4332A8FEDBF000A9112 /* DetailHeroInfoCollectionViewCell.swift */,
 				AC74A4312A8F899C000A9112 /* SelfConfiguringCell.swift */,
 			);
 			path = DetailsViewControllerViews;
@@ -243,8 +249,10 @@
 				AC74A4032A8E1B14000A9112 /* MainViewController.swift in Sources */,
 				AC74A4322A8F899C000A9112 /* SelfConfiguringCell.swift in Sources */,
 				AC74A3FF2A8E1B14000A9112 /* AppDelegate.swift in Sources */,
+				AC74A4342A8FEDBF000A9112 /* DetailHeroInfoCollectionViewCell.swift in Sources */,
 				AC74A41C2A8E209F000A9112 /* RickAndMorty.swift in Sources */,
 				AC74A4272A8E7FD4000A9112 /* UICollectionViewCell.swift in Sources */,
+				AC74A4362A937761000A9112 /* Header.swift in Sources */,
 				AC74A42F2A8F83CB000A9112 /* DetailHeroPhotoCollectionViewCell.swift in Sources */,
 				AC74A4242A8E271B000A9112 /* RickAndMortyCollectionViewCell.swift in Sources */,
 				AC74A4222A8E260E000A9112 /* ImageView.swift in Sources */,
